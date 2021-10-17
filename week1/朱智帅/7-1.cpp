@@ -19,7 +19,7 @@ int main()
 	{
 		cin >> cc;
 		int lencc = strlen(cc);
-		int i,cnt = 0;
+		int i, cnt = 0;
 		for (i = 0; i < len - lencc + 1;)
 		{
 			int s1 = i, s2 = 0;
@@ -33,7 +33,7 @@ int main()
 					{
 						s2 = 0;
 						cnt++;
-						i = i +1;
+						i = i + 1;
 						break;
 					}
 				}
