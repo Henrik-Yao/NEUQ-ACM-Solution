@@ -34,40 +34,40 @@
 
 	先分再治
 	分：把大数组分成一个个数
-void mergegui(int arr[],int l,int r)
-{
-	if(l==r){return;}
-	int mid=(l+r)/2;
-	mergegui(arr,l,mid);
-	mergegui(arr,mid+1,r);  //在这都是分
-	mergesort(arr,l,mid,r);	
-}
+	void mergegui(int arr[],int l,int r)
+	{
+		if(l==r){return;}
+		int mid=(l+r)/2;
+		mergegui(arr,l,mid);
+		mergegui(arr,mid+1,r);  //在这都是分
+		mergesort(arr,l,mid,r);	
+	}
 
 	治：让每两个数组（在函数中只是和成了一个数组样，但本质上在中间已经断开算作两个数组）从头到尾开始读取，把数按顺序依次排好形成一个大数组
-void mergesort(int arr[],int l,int mid,int r)
-{
-	int h[r-l+1];
-	int li=l,ri=mid+1;
-	int i=0;
-	while(li<=mid&&ri<=r)
+	void mergesort(int arr[],int l,int mid,int r)
 	{
-		h[i++]=arr[li]<arr[ri]?arr[li++]:arr[ri++];
+		int h[r-l+1];
+		int li=l,ri=mid+1;
+		int i=0;
+		while(li<=mid&&ri<=r)
+		{
+			h[i++]=arr[li]<arr[ri]?arr[li++]:arr[ri++];
+		}
+	//不可能左半侧数组与右半侧数组同时到头
+		while(li<=mid)
+		{
+			h[i++]=arr[li++];
+		}
+		while(ri<=r)
+		{
+			h[i++]=arr[ri++];
+		}
+		for(int j=0;j<r-l+1;j++)
+		{
+			arr[l+j]=h[j];
+		}
+
 	}
-//不可能左半侧数组与右半侧数组同时到头
-	while(li<=mid)
-	{
-		h[i++]=arr[li++];
-	}
-	while(ri<=r)
-	{
-		h[i++]=arr[ri++];
-	}
-	for(int j=0;j<r-l+1;j++)
-	{
-		arr[l+j]=h[j];
-	}
-	
-}
 
 
 
