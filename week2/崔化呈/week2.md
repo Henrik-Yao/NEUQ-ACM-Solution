@@ -5,16 +5,17 @@
     拆解步骤，就会发现有两个步骤在不断重复：1.把上面的所有层都移至中转柱。2.把最底下一层从它原来的位置移动至目标柱。
 	只有一层是递归的终止，一定是直接从开始柱转移至目标柱。	
 	所以把函数中的a作为开始柱，b作为中转柱，c作为目标柱开始递归。
-void hnt(int n,string a,string b,string c)
-{
-	if(n==1){cout<<a<<"->"<<c<<endl;}
-	else
+	
+	void hnt(int n,string a,string b,string c)
 	{
-		hnt(n-1,a,c,b);
-		cout<<a<<"->"<<c<<endl;
-		hnt(n-1,b,a,c);
+		if(n==1){cout<<a<<"->"<<c<<endl;}
+		else
+		{
+			hnt(n-1,a,c,b);
+			cout<<a<<"->"<<c<<endl;
+			hnt(n-1,b,a,c);
+		}
 	}
-}
 
 ## 分而治之
 *题意：，使每个城市实现孤立，即使桥的两头不能出现都未被攻占的情况，那些没桥连接的城市本身就处于孤立（不考虑）*
