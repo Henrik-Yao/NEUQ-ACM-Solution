@@ -1,1 +1,250 @@
 
+solution：
+汉诺塔问题：
+运用递归算法，将n-1个金盘移到中间处，n号金盘移到目标处。
+分而治之：
+用一个二维数组（或向量）记录道路数据，根据所攻破城市，判定各道路是否有城市被攻破，若均被攻破，则输出YES，否则输出NO。
+归并排序：
+运用递归算法，分解为单值后，合并（将左右两个数组合并）并排序。
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+void move(string a1,string a3){
+	cout<<a1<<"->"<<a3<<endl;
+}
+void han(int n,string a1,string a2,string a3){
+	if(n==1)
+		move(a1,a3);
+	else{
+		han(n-1,a1,a3,a2);
+		move(a1,a3);
+		han(n-1,a2,a1,a3);
+	}
+}
+int main(){
+    ios::sync_with_stdio(false);
+	int n;
+    string a1,a2,a3;
+	cin>>n;
+    cin>>a1>>a2>>a3;
+    if(n>=1 && n<=10)
+	    han(n,a1,a2,a3);
+	return 0;
+}
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(false);
+    bool text[10002];
+    int c1, c2;
+    int n,i,j,a;
+    pair<int, int>P[10002];
+	cin>>c1>>c2;
+	for (i=0;i<c2;i++){
+		int x,y;
+		cin>>x>>y;
+		P[i]={x,y};
+	}
+	cin>>a;
+	for(i=a;i--;){
+		int b;
+		cin>>b;
+		memset(text,1,sizeof(text));
+		for(j=b;j--;){
+			int c3;
+			cin>>c3;
+			text[c3]=0;
+		}
+		bool flag;
+		for(n=0;n<c2;n++){
+			if(text[P[n].first] && text[P[n].second]){
+                flag=false;
+                n=c2;
+            }
+			else
+				flag=true;
+		}
+        if(flag==true)
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+	}
+}
+
+
+#include <bits/stdc++.h>
+using namespace std;
+void sort(int a[],int m,int n);
+void sort1(int a[],int m,int n);
+void sort2(int a[],int m,int n,int mid);
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void sort(int a[],int m,int n){
+    sort1(a,m,n-1);
+}
+void sort1(int a[],int m,int n){
+    if(m>=n)
+        return ;
+    int mid=(m+n)/2;
+    sort1(a,m,mid);
+    sort1(a,mid+1,n);
+    sort2(a,m,n,mid);
+}
+void sort2(int a[],int m,int n,int mid){
+    int fuck[n-m+1],i,j,k;
+    for(k=m;k<=n;k++)
+        fuck[k-m]=a[k];
+    i=m;j=mid+1;
+    for(k=m;k<=n;k++){
+        if(i>mid){
+            a[k]=fuck[j-m];
+            j++;
+        }
+        else
+            if(j>n){
+                a[k]=fuck[i-m];
+                i++;
+            }
+            else
+                if(fuck[i-m]>fuck[j-m]){
+                    a[k]=fuck[j-m];
+                    j++;
+                }
+                else{
+                    a[k]=fuck[i-m];
+                    i++;
+                }
+    }
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+int main()
+{
+    int a[100001],n,i;
+    cin>>n;
+    for(i=0;i<n;i++)
+        cin>>a[i];
+    sort(a,0,n);
+    for(i=0;i<n;i++)
+        cout<<a[i]<<" ";
+    return 0;
+    //return 114514191980;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 250
