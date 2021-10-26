@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>week1-NEUQ-ACM招新赛重现</title>
+  <style>:root {
+  --color-primary: hsl(212, 89%, 53%);
+  --color-secondary: hsl(208, 7%, 46%);
+  --color-pass: hsl(100, 60%, 47%);
+  --color-danger: hsl(3, 68%, 53%);
+  --color-warning: hsl(35, 90%, 50%);
+  --color-ac: hsl(3, 89%, 53%);
+  --color-wa: hsl(100, 89%, 53%);
+  --color-pta: hsl(212, 87%, 30%);
+  --color-pds: hsl(23, 100%, 57%);
+  --color-pat: hsl(199, 88%, 57%);
+  --color-oms: hsl(175, 74%, 37%);
+  --color-zoj: hsl(227, 59%, 40%);
+  --color-es: hsl(45, 100%, 50%);
+  --text-black: hsl(0, 0%, 0%);
+  --text-dark: hsl(0, 0%, 10%);
+  --text-normal: hsl(0, 0%, 25%);
+  --text-light: hsl(0, 0%, 45%);
+  --text-lightest: hsl(0, 0%, 60%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-black-r: hsl(0, 0%, 100%);
+  --border-all: hsla(0, 0%, 0%, 0.06);
+  --bg-base: hsl(0, 0%, 100%);
+  --bg-light: hsl(0, 0%, 97%);
+  --bg-normal: hsl(0, 0%, 94%);
+  --bg-site: hsl(204, 24%, 96%);
+  --bg-base-r: hsl(0, 0%, 25%);
+  --active-brightness-diff: 0.85;
+}
+.paper {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+.paper *,
+.paper *::before,
+.paper *::after {
+  box-sizing: border-box;
+}
+.paper pre,
+.paper code,
+.paper kbd,
+.paper samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+.paper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.paper label {
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.paper hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+.paper .result table {
+  width: 100%;
+}
+.paper .result th,
+.paper .result td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.paper .result .box {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+/* stylelint-disable */
+.ques-view, .rendered-markdown {
+  line-height: 1.5;
+}
+.ques-view p, .rendered-markdown p {
+  margin: 0.5em 0;
+}
+.ques-view h1, .rendered-markdown h1, .ques-view h2, .rendered-markdown h2, .ques-view h3, .rendered-markdown h3, .ques-view h4, .rendered-markdown h4, .ques-view h5, .rendered-markdown h5, .ques-view h6, .rendered-markdown h6 {
+  margin: 0.8em 0;
+}
+.ques-view img, .rendered-markdown img {
+  max-width: 100%;
+}
+.ques-view .ques-list, .rendered-markdown .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li, .rendered-markdown .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input, .rendered-markdown .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea, .rendered-markdown textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code, .rendered-markdown code {
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 3px;
+  border: 1px solid var(--border-all);
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+}
+.ques-view pre, .rendered-markdown pre {
+  padding: 6px 12px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-all);
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code, .rendered-markdown pre code {
+  background: none;
+  border: none;
+  color: var(--text-normal);
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr, .rendered-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border-all);
+}
+.ques-view blockquote, .rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.ques-view table, .rendered-markdown table {
+  margin: 0 auto;
+}
+.ques-view table th, .rendered-markdown table th, .ques-view table td, .rendered-markdown table td {
+  border: 1px solid var(--border-all);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score, .rendered-markdown .ques-score {
+  color: var(--text-light);
+  user-select: none;
+}
+.rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.rendered-markdown blockquote p {
+  margin-bottom: 0;
+}
+.rendered-markdown table td, .rendered-markdown table th {
+  border: 1px solid var(--border-all);
+  padding: 5px;
+}
+.rendered-markdown p:first-child {
+  margin: 0;
+}
+.katex-mathml {
+  display: none;
+}
+.code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Monaco, Courier, "Courier New", monospace;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="paper" style="max-width:940px;margin:auto" data-reactroot=""><div style="padding:16px;text-align:center;font-size:24px;font-weight:bold">week1-NEUQ-ACM招新赛重现</div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">开始时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/10/12 20:00:00">2021/10/12 20:00:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">结束时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/10/17 22:00:00">2021/10/17 22:00:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答题时长</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="7320分钟">7320分钟</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答卷类型</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="空白答卷">空白答卷</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">总分</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="871">871</span></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">编程题</span><span>得分：暂无</span><span style="margin-left:20px">总分：871</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-1</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">string</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>给定一个只含有小写字母的文本串，给定<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>个模式串，求每个模式串在文本串中的出现次数</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>第一行输出模式串的个数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span></p>
+<p>接着从第二行开始读入一个文本串，文本串只包含小写字母，无空格和回车</p>
+<p>再之后读入<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>行模式串，模式串之间用回车间隔</p>
+<p>需要注意的是：</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≤</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">n \le 20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">20</span></span></span></span></p>
+<p>文本串的长度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>50000</mn></mrow><annotation encoding="application/x-tex">\le 50000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">50000</span></span></span></span></p>
+<p>模式串的长度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">\le 20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">20</span></span></span></span></p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出共包括<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>行，每一行按顺序输出每一个模式串的出现次数</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">3
+abcabcabcabbb
+abc
+ab
+b</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">3
+4
+6</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-2</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">区间</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>有一个长为n的序列，一个区间的权值定义为这个区间内不同数字的个数，请在这个序列中找出两段不相交的区间使它们的权值的和最大</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>第一行读入数据组数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>​</p>
+<p>第二行<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>个数(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&lt;</mo><mn>1</mn><mi>e</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">n&lt;1e6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathnormal">e</span><span class="mord">6</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&lt;</mo><mn>1</mn><mi>e</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">a_i&lt;1e5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathnormal">e</span><span class="mord">5</span></span></span></span>)</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出一个整数表示最大的权值</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">5
+1 2 3 2 1</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">5</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-3</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">小步点</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>众所周知，校园跑使用小步点软件时需要依次经过5个点位，一天Phenix发明了一个范围增强器，当Phenix距离点位R米的时就算经过了该点位，现在Phenix公里数已经达到了2公里，但是还剩两个点位需要经过，现在将校园抽象为一个二维坐标系，假设Phenix在（0,0）点，剩下的第一个点位在（d,n）,第二个在(2d,0)，由于Phenix超过了两公里的部分是一点也不想多跑，所以你需要计算在拥有范围增强器的基础上依次经过这两个点位的最短距离</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>三个整数R，d，n。（R&gt;0,|d|，|n|，|R|&lt;=1000）</p>
+<p>保证4 * R * R &lt;=  d * d + n * n</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>一个两位小数，表示最短距离</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">1 3 5</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">9.00</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-4</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">分糖果</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>现在有n个糖果和一群小朋友，第一个小朋友拥有这n个糖果，他现在有两种选择①分给第二个小朋友x个，x必须是n的约数，且x&lt;n②全部自己留着，第二个小朋友同样也是要么分自己拥有糖果数的约数个给下一个小朋友，要么全留着，以此类推。现在给出第一个小朋友的糖果数n，询问有多少种分法。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入一个整数（n &lt;= 1000）</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>方案数</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">6</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">6</code></pre>
+<h3 id="样例解释">样例解释</h3>
+<p>有这6种分法
+6</p>
+<p>6 1</p>
+<p>6 2</p>
+<p>6 2 1</p>
+<p>6 3</p>
+<p>6 3 1</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-5</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">找眼镜</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>一天Phenix的眼镜被俱乐部某个成员拿了，然后所有的俱乐部成员围成了一个圈，每个人都有个编号，按逆时针递增，而且每个人都有朝向（面向圈内或者圈外），Phenix需要询问编号为1的同学是谁拿的眼镜，但是俱乐部成员很团结不会出卖队友，只会告诉他，例如“眼镜藏在我左数第3个人的右数第1个人的左数第2个人那里”这种形式。现在给出每个人的朝向和名字，和1号同学给出的提示，你需要帮他找出是谁拿的眼镜</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>第一行两个整数n，m表示有n个人，m个提示，接下来n行，每行一个数字0/1和一个字符串，按1到n的编号顺序依次给出每个人的朝向（0朝向圈内，1朝向圈外）和名字。
+再接下来m行，每行同样两个数字0/1,x。表示眼镜往左/右数x个人那里</p>
+<p>(n,m&lt;=100000)</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出拿了眼镜的同学的名字</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">7 3
+0 ymh
+0 lc
+0 zx 
+1 wjq
+1 ld
+0 hhj
+1 yh 
+0 3
+1 1
+0 2</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">hhj</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-6</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">恰早饭</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>Phenix今天又有早八，由于他喜欢卡点到，所以只给自己留了T分钟的时间吃饭。鹏远餐厅有n道菜，每道菜有一个快乐值v和用餐时间t，意为Phenix可以花t分钟吃掉这道菜，然后获得v的快乐值。但是如果吃早饭的时间太长了，导致他迟到了他也会感到不开心，具体的，如果t &gt; T,他获得的快乐值就是v-(t-T)。现在请你计算Phenix吃掉某一道菜能获得的最大快乐值</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>第一行两个整数n,T,接下来n行每行两个数表示每道菜的快乐值和用餐时间。n&lt;=100000</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出Phenix能获得的最大快乐值（注意可能是负数）</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">2 5
+3 3
+4 5</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">4</code></pre>
+</div></div></div></div></div><hr/></div></div>
+
+</body>
+</html>
