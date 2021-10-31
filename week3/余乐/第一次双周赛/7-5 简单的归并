@@ -1,0 +1,29 @@
+#include <cstdio>
+using namespace std;
+int T,m,n,a[101],b[101],c[201],p1=1,p2=1;
+int main(){
+	scanf("%d",&T);
+	for(int i=1;i<=T;i++){
+		scanf("%d",&m);
+		p1=1;p2=1;
+		for(int j=1;j<=m;j++) scanf("%d",&a[j]);
+		scanf("%d",&n);
+		for(int j=1;j<=n;j++) scanf("%d",&b[j]);
+		for(int j=1;j<=n+m;j++){
+			if(p1<=m&&p2<=n){
+				if(a[p1]<b[p2]) c[j]=a[p1++];
+				else c[j]=b[p2++];
+			}
+			else{
+				if(p1<=m) c[j]=a[p1++];
+				if(p2<=n) c[j]=b[p2++];
+			}
+		}
+		for(int j=1;j<=n+m;j++){
+			printf("%d",c[j]);
+			if(j<n+m) printf(" ");
+		}
+		if(i<T) printf("\n");
+	}
+	return 0;
+}
