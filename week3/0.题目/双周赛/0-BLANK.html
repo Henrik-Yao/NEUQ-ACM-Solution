@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>week3-第一次双周赛重现</title>
+  <style>:root {
+  --color-primary: hsl(212, 89%, 53%);
+  --color-secondary: hsl(208, 7%, 46%);
+  --color-pass: hsl(100, 60%, 47%);
+  --color-danger: hsl(3, 68%, 53%);
+  --color-warning: hsl(35, 90%, 50%);
+  --color-ac: hsl(3, 89%, 53%);
+  --color-wa: hsl(100, 89%, 53%);
+  --color-pta: hsl(212, 87%, 30%);
+  --color-pds: hsl(23, 100%, 57%);
+  --color-pat: hsl(199, 88%, 57%);
+  --color-oms: hsl(175, 74%, 37%);
+  --color-zoj: hsl(227, 59%, 40%);
+  --color-es: hsl(45, 100%, 50%);
+  --text-black: hsl(0, 0%, 0%);
+  --text-dark: hsl(0, 0%, 10%);
+  --text-normal: hsl(0, 0%, 25%);
+  --text-light: hsl(0, 0%, 45%);
+  --text-lightest: hsl(0, 0%, 60%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-black-r: hsl(0, 0%, 100%);
+  --border-all: hsla(0, 0%, 0%, 0.06);
+  --bg-base: hsl(0, 0%, 100%);
+  --bg-light: hsl(0, 0%, 97%);
+  --bg-normal: hsl(0, 0%, 94%);
+  --bg-site: hsl(204, 24%, 96%);
+  --bg-base-r: hsl(0, 0%, 25%);
+  --active-brightness-diff: 0.85;
+}
+.paper {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+.paper *,
+.paper *::before,
+.paper *::after {
+  box-sizing: border-box;
+}
+.paper pre,
+.paper code,
+.paper kbd,
+.paper samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+.paper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.paper label {
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.paper hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+.paper .result table {
+  width: 100%;
+}
+.paper .result th,
+.paper .result td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.paper .result .box {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+/* stylelint-disable */
+.ques-view, .rendered-markdown {
+  line-height: 1.5;
+}
+.ques-view p, .rendered-markdown p {
+  margin: 0.5em 0;
+}
+.ques-view h1, .rendered-markdown h1, .ques-view h2, .rendered-markdown h2, .ques-view h3, .rendered-markdown h3, .ques-view h4, .rendered-markdown h4, .ques-view h5, .rendered-markdown h5, .ques-view h6, .rendered-markdown h6 {
+  margin: 0.8em 0;
+}
+.ques-view img, .rendered-markdown img {
+  max-width: 100%;
+}
+.ques-view .ques-list, .rendered-markdown .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li, .rendered-markdown .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input, .rendered-markdown .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea, .rendered-markdown textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code, .rendered-markdown code {
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 3px;
+  border: 1px solid var(--border-all);
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+}
+.ques-view pre, .rendered-markdown pre {
+  padding: 6px 12px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-all);
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code, .rendered-markdown pre code {
+  background: none;
+  border: none;
+  color: var(--text-normal);
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr, .rendered-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border-all);
+}
+.ques-view blockquote, .rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.ques-view table, .rendered-markdown table {
+  margin: 0 auto;
+}
+.ques-view table th, .rendered-markdown table th, .ques-view table td, .rendered-markdown table td {
+  border: 1px solid var(--border-all);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score, .rendered-markdown .ques-score {
+  color: var(--text-light);
+  user-select: none;
+}
+.rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.rendered-markdown blockquote p {
+  margin-bottom: 0;
+}
+.rendered-markdown table td, .rendered-markdown table th {
+  border: 1px solid var(--border-all);
+  padding: 5px;
+}
+.rendered-markdown p:first-child {
+  margin: 0;
+}
+.katex-mathml {
+  display: none;
+}
+.code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Monaco, Courier, "Courier New", monospace;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="paper" style="max-width:940px;margin:auto" data-reactroot=""><div style="padding:16px;text-align:center;font-size:24px;font-weight:bold">week3-第一次双周赛重现</div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">开始时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/10/25 12:40:00">2021/10/25 12:40:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">结束时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/10/31 16:00:00">2021/10/31 16:00:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答题时长</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="8840分钟">8840分钟</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答卷类型</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="空白答卷">空白答卷</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">总分</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="160">160</span></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">编程题</span><span>得分：暂无</span><span style="margin-left:20px">总分：160</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-1</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">最大子段和</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>给定n个整数（可能为负数）组成的序列a[1],a[2],a[3],…,a[n]，求该序列如a[i]+a[i+1]+…+a[j]的子段和的最大值。当所给的整数均为负数时，定义子段和为0。</p>
+<p>要求算法的时间复杂度为O(n)。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入有两行：</p>
+<p>第一行是n值（1&lt;=n&lt;=10000)；</p>
+<p>第二行是n个整数。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出最大子段和。</p>
+<h3 id="输入样例">输入样例:</h3>
+<p>在这里给出一组输入。例如：</p>
+<pre><code class="language-in">6
+-2 11 -4 13 -5 -2</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<p>在这里给出相应的输出。例如：</p>
+<pre><code class="language-out">20</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-2</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">汉诺塔问题</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>给定一个由n个圆盘组成的塔，这些圆盘按照大小递减的方式套在第一根桩柱上。现要将整个塔移动到另一根桩柱上，每次只能移动一个圆盘，且较大的圆盘在移动过程中不能放置在较小的圆盘上面。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入由四行：
+第一行是圆盘数量n(1&lt;=n&lt;=10);
+第二行到第四行分别是三根桩柱的名字(字符串)，n个盘子套在第一根桩柱上。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出移动步骤，每行输出一步。</p>
+<h3 id="输入样例">输入样例:</h3>
+<p>在这里给出一组输入。例如：</p>
+<pre><code class="language-in">2
+a
+b
+c</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<p>在这里给出相应的输出。例如：</p>
+<pre><code class="language-out">a-&gt;b
+a-&gt;c
+b-&gt;c</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-3</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">汉诺塔III</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>约19世纪末，在欧州的商店中出售一种智力玩具，在一块铜板上有三根杆，最左边的杆上自上而下、由小到大顺序串着由64个圆盘构成的塔。目的是将最左边杆上的盘全部移到右边的杆上，条件是一次只能移动一个盘，且不允许大盘放在小盘的上面。
+现在我们改变游戏的玩法，不允许直接从最左(右)边移到最右(左)边(每次移动一定是移到中间杆或从中间移出)，也不允许大盘放到下盘的上面。
+Daisy已经做过原来的汉诺塔问题和汉诺塔II，但碰到这个问题时，她想了很久都不能解决，现在请你帮助她。现在有N个圆盘，她至少多少次移动才能把这些圆盘从最左边移到最右边？</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>包含多组数据，每次输入一个N值(1&lt;=N=35)。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>对于每组数据，输出移动最小的次数。</p>
+<h3 id="输入样例">输入样例:</h3>
+<p>在这里给出一组输入。例如：</p>
+<pre><code class="language-in">1
+3
+12</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<p>在这里给出相应的输出。例如：</p>
+<pre><code class="language-out">2
+26
+531440</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-4</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">汉诺塔II</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>经典的汉诺塔问题经常作为一个递归的经典例题存在。可能有人并不知道汉诺塔问题的典故。汉诺塔来源于印度传说的一个故事，上帝创造世界时作了三根金刚石柱子，在一根柱子上从下往上按大小顺序摞着64片黄金圆盘。上帝命令婆罗门把圆盘从下面开始按大小顺序重新摆放在另一根柱子上。并且规定，在小圆盘上不能放大圆盘，在三根柱子之间一回只能移动一个圆盘。有预言说，这件事完成时宇宙会在一瞬间闪电式毁灭。也有人相信婆罗门至今仍在一刻不停地搬动着圆盘。恩，当然这个传说并不可信，如今汉诺塔更多的是作为一个玩具存在。Gardon就收到了一个汉诺塔玩具作为生日礼物。
+　　Gardon是个怕麻烦的人（恩，就是爱偷懒的人），很显然将64个圆盘逐一搬动直到所有的盘子都到达第三个柱子上很困难，所以Gardon决定作个小弊，他又找来了一根一模一样的柱子，通过这个柱子来更快的把所有的盘子移到第三个柱子上。下面的问题就是：当Gardon在一次游戏中使用了N个盘子时，他需要多少次移动才能把他们都移到第三个柱子上？很显然，在没有第四个柱子时，问题的解是2^N-1，但现在有了这个柱子的帮助，又该是多少呢？ </p>
+<h3 id="输入格式">输入格式:</h3>
+<p>包含多组数据，每个数据一行，是盘子的数目N(1&lt;=N&lt;=64)。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>对于每组数据，输出一个数，到达目标需要的最少的移动数。</p>
+<h3 id="输入样例">输入样例:</h3>
+<p>在这里给出一组输入。例如：</p>
+<pre><code class="language-in">1
+3
+12</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<p>在这里给出相应的输出。例如：</p>
+<pre><code class="language-out">1
+5
+81</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-5</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">简单的归并</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>已知数组A和B各有m、n个元素，且元素按值非递减排列，现要求把A和B归并为一个新的数组C，且C中的数据元素仍然按值非递减排列。
+例如，若A=(3，5，8，11)，B=(2，6，8，9，11，15，20)，
+则C=(2，3，5，6，8，8，9，11，11，15，20)</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>首先输入一个正整数T，表示测试数据的组数，然后是T组测试数据。
+每组测试数据输入两行，其中第一行首先输入A的元素个数m（1≤m≤100），然后输入m个元素。第2行首先输入B的元素个数n（1≤n≤100），然后输入n个元素。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>对于每组测试数据。分别输出将A、B合并后的数组C的全部元素。输出的元素之间以一个空格分隔（最后一个数据之后没有空格）。</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">1
+4 3 5 8 11
+7 2 6 8 9 11 15 20
+</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">2 3 5 6 8 8 9 11 11 15 20
+</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-6</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">字符串的全排列</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>给定一个全由小写字母构成的字符串，求它的全排列，按照字典序从小到大输出。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>一行，一个字符串，长度不大于8。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出所有全排列，每行一种排列形式，字典序从小到大。</p>
+<h3 id="输入样例">输入样例:</h3>
+<p>在这里给出一组输入。例如：</p>
+<pre><code class="language-in">abc</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<p>在这里给出相应的输出。例如：</p>
+<pre><code class="language-out">abc
+acb
+bac
+bca
+cab
+cba</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-7</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">逆序对</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>求逆序对。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>第一行是一个整数n，（n&lt;=1000,000）表示输入序列的长度，接下来一行是n个整数(每个数的绝对值小于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span>)。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>一个数，表示逆序对个数(逆序即任意一对数前面的数比后面的数大即为一对逆序对)。</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">10
+1 3 5 7 9 8 4 2 6 10</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<p>逆序对对数可能很大，计数器要用long long：</p>
+<pre><code class="language-out">14</code></pre>
+<p>说明：样例中如1和3不是逆序对，而3和2是1对逆序对，例子中共有14对逆序对。题目中可能有某些数字出现多次的情况。</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-8</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">二分查找</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>请实现有重复数字的有序数组的二分查找。</p>
+<p>输出在数组中第一个大于等于查找值的位置，如果数组中不存在这样的数，则输出数组长度加一。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入第一行有两个数，第一个数为数组长度n（≤10^6），第二个数为需要查找的数。</p>
+<p>接下来有n个整数，以空格或换行符分隔。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出待查找的数的位置。</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">5 4
+1 2 4 4 5</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">3</code></pre>
+<h3 id="样例解释">样例解释:</h3>
+<pre><code>有5个数，查找4出现的位置，4第一次出现在第3个位置，所以输出3。</code></pre>
+</div></div></div></div></div><hr/></div></div>
+
+</body>
+</html>
