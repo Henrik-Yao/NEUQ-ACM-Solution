@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+int s[10001][10001];
+bool vis[10001][10001],map[10001][10001];
+int n,m,tot,now,tempx[10000001],tempy[10000001],x,y,xx[4]= {
+	1,0,-1,0
+}
+,yy[4]= {
+	0,1,0,-1
+}
+;
+char c;
+void f(int x,int y) {
+	if(vis[x][y]) 
+	    return; else 
+		  vis[x][y]=1;
+	tot++;
+	for (int i=0;i<=3;i++) {
+		if(x+xx[i]>=1&&x+xx[i]<=n&&y+yy[i]>=1&&y+yy[i]<=n&&map[x+xx[i]][y+yy[i]]+map[x][y]==1) {
+			f(x+xx[i],y+yy[i]);
+		}
+	}
+	tempx[++now]=x;
+	tempy[now]=y;
+}
+int main() {
+	cin>>n>>m;
+	for (int i=1;i<=n;i++) {
+		for (int j=1;j<=n;j++) {
+			cin>>c;
+			map[i][j]=c-'0';
+		}
+	}
+	for (int i=1;i<=m;i++) {
+		cin>>x>>y;
+		if(s[x][y]) {
+			cout<<s[x][y]<<endl;
+		} else {
+			tot=now=0;
+			f(x,y);
+			cout<<tot<<endl;
+			for (int j=1;j<=now;j++) {
+				s[tempx[j]][tempy[j]]=tot;
+			}
+		}
+	}
+}
