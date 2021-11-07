@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+
+inline int read() {
+	int ret=0,f=1;char ch=getchar();
+	for (; !isdigit(ch); ch=getchar()) if (ch=='-') f=-f;
+	for (; isdigit(ch); ch=getchar()) ret=ret*10+ch-48;
+	return ret*f;
+}
+
+int Power(int A,int B,int C) {
+    int ret=1,a=A;
+    while (B) {
+        if (B&1) ret=ret*A%C;
+        B>>=1;
+        (A*=A)%=C;
+    }
+    return ret;
+}
+
+signed main() {
+    for (int T=read(); T--; ) {
+        int A=read(),B=read(),C=read();
+        printf("%lld\n",Power(A,B,C));
+    }
+    return 0;
+}
