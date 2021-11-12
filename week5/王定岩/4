@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool mp[2005][2005];
+
+int m,n,ans;
+
+void dfs(int x,int y){
+	mp[x][y]=0;
+	if(mp[x+1][y])dfs(x+1,y);
+	if(mp[x][y-1])dfs(x,y-1);
+	if(mp[x][y+1])dfs(x,y+1);
+	if(mp[x-1][y])dfs(x-1,y);
+	return;
+}
+
+int main(){
+	cin>>n>>m;
+	for(register int i=1;i<=n;i++)
+	for(register int j=1;j<=m;j++)cin>>mp[i][j];
+	for(register int i=1;i<=n;i++)
+	for(register int j=1;j<=m;j++){
+		if(mp[i][j])dfs(i,j),ans++;
+	}
+	cout<<ans;
+	return 0;
+}
