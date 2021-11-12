@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int maxx=4e5+7;
+
+vector<int> vec[maxx];
+
+bool bj[maxx],ff;
+char sex[maxx];
+
+void dfs(int x,int num) 
+{
+	if(num>=4)return;
+	for(int i=0;i<vec[x].size();i++)
+	{
+		if(!bj[vec[x][i]]) 
+		{
+			bj[vec[x][i]]=1; 
+			dfs(vec[x][i],num+1); 
+		}
+		else ff=1;
+	}
+}
+int main() 
+{
+	int T;
+	cin>>T;
+	while(T--)
+	{
+		int t,father,mother;
+		char ch;
+		scanf("%d ",&t);
+		sex[t]=getchar();
+		scanf(" %d %d",&father,&mother);
+		if(father!=-1) 
+		{
+			vec[t].push_back(father); 
+			sex[father]='M';
+		}
+		if(mother!=-1)
+		{
+			vec[t].push_back(mother);
+			sex[mother]='F';
+		}
+	}
+	cin>>T;
+	while(T--)
+	{
+		int x,y;
+		cin>>x>>y;
+		if(sex[x]==sex[y])puts("Never Mind");
+		else
+		{
+			memset(bj,0,sizeof(bj)); 
+			bj[x]=1; bj[y]=1;
+			ff=0;
+			dfs(x,0);
+			dfs(y,0);
+			if(ff)puts("No");
+			else puts("Yes");
+		}
+	}
+	return 0;
+}
