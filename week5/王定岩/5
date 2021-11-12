@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int m[50005],n,sta,b[50005],f;
+
+inline int read(){
+	register char ch=getchar(); register int x=0;
+	while(!isdigit(ch))ch=getchar();
+	while(isdigit(ch)){x=(x<<1)+(x<<3)+(ch^48);ch=getchar();}
+	return x;
+}
+
+void dfs(int x){
+	b[x]=1;
+	if(m[x]==0){
+		f=1;
+		return;
+	}
+	if(m[x]+x<=n&&b[m[x]+x]==0)dfs(m[x]+x);
+	if(x-m[x]>=1&&b[x-m[x]]==0)dfs(x-m[x]);
+	return;
+}
+
+int main(){
+	cin>>n;
+	for(int i=1;i<=n;i++)m[i]=read();
+	cin>>sta;
+	sta++;
+	dfs(sta);
+	if(f)cout<<"True";
+	else cout<<"False";
+	return 0;
+}
