@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+#define ri register int 
+using namespace std;
+
+typedef long long ll;
+
+const int mod=1000000007;
+
+ll n,a[10005];
+
+struct matrix{
+	ll m[3][3];
+}ans,initial;
+
+matrix operator * (const matrix x,const matrix y){
+	matrix asd;
+	for(ri i=1;i<=2;i++)
+		for(ri j=1;j<=2;j++)
+			asd.m[i][j]=0;
+	for(ri i=1;i<=2;i++)
+		for(ri j=1;j<=2;j++)
+			for(ri k=1;k<=2;k++)
+				asd.m[i][j]=(asd.m[i][j]+x.m[i][k]*y.m[k][j]%mod)%mod;
+	return asd;
+}
+
+inline void qpow(ll k){
+	while(k){
+		if(k&1){
+			ans=ans*initial;
+			k--;
+		}
+		k>>=1;
+		initial=initial*initial;
+	}
+}
+
+int main(){
+	cin>>n;
+	int temp;
+	a[1]=a[2]=1;
+	for(int i=3;i<=100;i++){
+		ans.m[1][1]=ans.m[1][2]=1;ans.m[2][1]=ans.m[2][2]=0;
+		initial.m[1][1]=initial.m[1][2]=initial.m[2][1]=1;initial.m[2][2]=0;
+		qpow(i-2);
+		a[i]=ans.m[1][1];
+	}
+	for(int i=1;i<=n;i++){
+		cin>>temp;
+		cout<<a[temp];
+		if(i!=n)cout<<endl;
+	}
+	return 0;
+} 

@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>week5-第二次双周赛重现</title>
+  <style>:root {
+  --color-primary: hsl(212, 89%, 53%);
+  --color-secondary: hsl(208, 7%, 46%);
+  --color-pass: hsl(100, 60%, 47%);
+  --color-danger: hsl(3, 68%, 53%);
+  --color-warning: hsl(35, 90%, 50%);
+  --color-ac: hsl(3, 89%, 53%);
+  --color-wa: hsl(100, 89%, 53%);
+  --color-pta: hsl(212, 87%, 30%);
+  --color-pds: hsl(23, 100%, 57%);
+  --color-pat: hsl(199, 88%, 57%);
+  --color-oms: hsl(175, 74%, 37%);
+  --color-zoj: hsl(227, 59%, 40%);
+  --color-es: hsl(45, 100%, 50%);
+  --text-black: hsl(0, 0%, 0%);
+  --text-dark: hsl(0, 0%, 10%);
+  --text-normal: hsl(0, 0%, 25%);
+  --text-light: hsl(0, 0%, 45%);
+  --text-lightest: hsl(0, 0%, 60%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-black-r: hsl(0, 0%, 100%);
+  --border-all: hsla(0, 0%, 0%, 0.06);
+  --bg-base: hsl(0, 0%, 100%);
+  --bg-light: hsl(0, 0%, 97%);
+  --bg-normal: hsl(0, 0%, 94%);
+  --bg-site: hsl(204, 24%, 96%);
+  --bg-base-r: hsl(0, 0%, 25%);
+  --active-brightness-diff: 0.85;
+}
+.paper {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+.paper *,
+.paper *::before,
+.paper *::after {
+  box-sizing: border-box;
+}
+.paper pre,
+.paper code,
+.paper kbd,
+.paper samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+.paper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.paper label {
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.paper hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+.paper .result table {
+  width: 100%;
+}
+.paper .result th,
+.paper .result td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.paper .result .box {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+/* stylelint-disable */
+.ques-view, .rendered-markdown {
+  line-height: 1.5;
+}
+.ques-view p, .rendered-markdown p {
+  margin: 0.5em 0;
+}
+.ques-view h1, .rendered-markdown h1, .ques-view h2, .rendered-markdown h2, .ques-view h3, .rendered-markdown h3, .ques-view h4, .rendered-markdown h4, .ques-view h5, .rendered-markdown h5, .ques-view h6, .rendered-markdown h6 {
+  margin: 0.8em 0;
+}
+.ques-view img, .rendered-markdown img {
+  max-width: 100%;
+}
+.ques-view .ques-list, .rendered-markdown .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li, .rendered-markdown .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input, .rendered-markdown .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea, .rendered-markdown textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code, .rendered-markdown code {
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 3px;
+  border: 1px solid var(--border-all);
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+}
+.ques-view pre, .rendered-markdown pre {
+  padding: 6px 12px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-all);
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code, .rendered-markdown pre code {
+  background: none;
+  border: none;
+  color: var(--text-normal);
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr, .rendered-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border-all);
+}
+.ques-view blockquote, .rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.ques-view table, .rendered-markdown table {
+  margin: 0 auto;
+}
+.ques-view table th, .rendered-markdown table th, .ques-view table td, .rendered-markdown table td {
+  border: 1px solid var(--border-all);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score, .rendered-markdown .ques-score {
+  color: var(--text-light);
+  user-select: none;
+}
+.rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.rendered-markdown blockquote p {
+  margin-bottom: 0;
+}
+.rendered-markdown table td, .rendered-markdown table th {
+  border: 1px solid var(--border-all);
+  padding: 5px;
+}
+.rendered-markdown p:first-child {
+  margin: 0;
+}
+.katex-mathml {
+  display: none;
+}
+.code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Monaco, Courier, "Courier New", monospace;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="paper" style="max-width:940px;margin:auto" data-reactroot=""><div style="padding:16px;text-align:center;font-size:24px;font-weight:bold">week5-第二次双周赛重现</div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">开始时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/11/07 22:00:00">2021/11/07 22:00:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">结束时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/12/07 22:00:00">2021/12/07 22:00:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答题时长</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="43200分钟">43200分钟</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答卷类型</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="空白答卷">空白答卷</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">总分</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="285">285</span></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">编程题</span><span>得分：暂无</span><span style="margin-left:20px">总分：285</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-1</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">愿天下有情人都是失散多年的兄妹</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>呵呵。大家都知道五服以内不得通婚，即两个人最近的共同祖先如果在五代以内（即本人、父母、祖父母、曾祖父母、高祖父母）则不可通婚。本题就请你帮助一对有情人判断一下，他们究竟是否可以成婚？</p>
+<h3 id="输入格式：">输入格式：</h3>
+<p>输入第一行给出一个正整数<code>N</code>（2 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span> <code>N</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">\le 10^4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span></span>），随后<code>N</code>行，每行按以下格式给出一个人的信息：</p>
+<pre><code>本人ID 性别 父亲ID 母亲ID</code></pre>
+<p>其中<code>ID</code>是5位数字，每人不同；性别<code>M</code>代表男性、<code>F</code>代表女性。如果某人的父亲或母亲已经不可考，则相应的<code>ID</code>位置上标记为<code>-1</code>。</p>
+<p>接下来给出一个正整数<code>K</code>，随后<code>K</code>行，每行给出一对有情人的<code>ID</code>，其间以空格分隔。</p>
+<p>注意：题目保证两个人是同辈，每人只有一个性别，并且血缘关系网中没有乱伦或隔辈成婚的情况。</p>
+<h3 id="输出格式：">输出格式：</h3>
+<p>对每一对有情人，判断他们的关系是否可以通婚：如果两人是同性，输出<code>Never Mind</code>；如果是异性并且关系出了五服，输出<code>Yes</code>；如果异性关系未出五服，输出<code>No</code>。</p>
+<h3 id="输入样例：">输入样例：</h3>
+<pre><code class="language-in">24
+00001 M 01111 -1
+00002 F 02222 03333
+00003 M 02222 03333
+00004 F 04444 03333
+00005 M 04444 05555
+00006 F 04444 05555
+00007 F 06666 07777
+00008 M 06666 07777
+00009 M 00001 00002
+00010 M 00003 00006
+00011 F 00005 00007
+00012 F 00008 08888
+00013 F 00009 00011
+00014 M 00010 09999
+00015 M 00010 09999
+00016 M 10000 00012
+00017 F -1 00012
+00018 F 11000 00013
+00019 F 11100 00018
+00020 F 00015 11110
+00021 M 11100 00020
+00022 M 00016 -1
+00023 M 10012 00017
+00024 M 00022 10013
+9
+00021 00024
+00019 00024
+00011 00012
+00022 00018
+00001 00004
+00013 00016
+00017 00015
+00019 00021
+00010 00011</code></pre>
+<h3 id="输出样例：">输出样例：</h3>
+<pre><code class="language-out">Never Mind
+Yes
+Never Mind
+No
+Yes
+No
+Yes
+No
+No</code></pre>
+<p><strong>鸣谢用户 徐校波 修正数据！</strong></p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-2</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">哥德巴赫最新猜想</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>X遇到一个关于素数的问题需要你这位大牛帮他解决。素数（prime number）又称质数。一个大于1的自然数，除了1和它本身外，不能整除以其他自然数，换句话说就是该数除了1和它本身以外不再有其他的因数，否则称为合数。哥德巴赫是德国数学家。出生于格奥尼格斯别尔格（现名加里宁城）。曾在英国牛津大学学习。原学法学，由于在欧洲各国访问期间结识了贝努利家族，所以对数学研究产生了兴趣。曾担任中学教师。1725年，到了俄国，同年被选为彼得堡科学院院士。1725年~1740年担任彼得堡科学院会议秘书。1742年，移居莫斯科，并在俄国外交部任职。1742年，哥德巴赫在教学中发现，每个不小于6的偶数都是两个素数之和。如6＝3＋3，14＝3＋11等等。公元1742年6月7日哥德巴赫写信给当时的大数学家欧拉，欧拉在6月30日给他的回信中说，他相信这个猜想是正确的，但他不能证明。叙述如此简单的问题，连欧拉这样首屈一指的数学家都不能证明，这个猜想便引起了许多数学家的注意。我们不需要你去证明哥德巴赫猜想。我们假设哥德巴赫猜想是正确的，一个不小于6的偶数，都是两个素数之和。例如14＝3＋11，也可以表示为14=7+7。现在的问题是给定一个正整数N，求N是最少几个素数的和。。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>首先输入一个正整数N，代表测试数据的组数，接下来输入N个正整数，分别代表要处理的数，每组一个正整数满足在：6 ~ 1000000000 范围。。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出将会有N行，每行对应一个数的歌德巴赫最新猜想这个数时候需要的最少素数个数。。</p>
+<h3 id="输入样例">输入样例:</h3>
+<p>在这里给出一组输入。例如：</p>
+<pre><code class="language-in">2
+9
+11</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<p>在这里给出相应的输出。例如：</p>
+<pre><code class="language-out">2
+1</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-3</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">图深度优先遍历</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>编写程序对给定的有向图（不一定连通）进行深度优先遍历，图中包含n个顶点，编号为0至n-1。本题限定在深度优先遍历过程中，如果同时出现多个待访问的顶点，则优先选择编号最小的一个进行访问，以顶点0为遍历起点。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入第一行为两个整数n和e，分别表示图的顶点数和边数，其中n不超过20000，e不超过50。接下来e行表示每条边的信息，每行为两个整数a、b，表示该边的端点编号，但各边并非按端点编号顺序排列。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出为一行整数，每个整数后一个空格，即该有向图的深度优先遍历结点序列。</p>
+<h3 id="输入样例1">输入样例1:</h3>
+<pre><code class="language-in">3 3
+0 1
+1 2
+0 2</code></pre>
+<h3 id="输出样例1">输出样例1:</h3>
+<pre><code class="language-out">0 1 2 </code></pre>
+<h3 id="输入样例2">输入样例2:</h3>
+<pre><code class="language-in">4 4
+0 2
+0 1
+1 2
+3 0</code></pre>
+<h3 id="输出样例2">输出样例2:</h3>
+<pre><code class="language-out">0 1 2 3 </code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-4</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">山</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p><strong>Drizzle</strong> 前往山地统计大山的数目，现在收到这片区域的地图，地图中用<code>0（平地）</code>和<code>1（山峰）</code>绘制而成，请你帮忙计算其中的大山数目<br>山总是被平地<strong>四面</strong>包围着，每一座山只能在水平或垂直方向上连接相邻的山峰而形成。一座山峰四面被平地包围，这个山峰也算一个大山<br>另外，你可以假设地图的四面都被平地包围着。</p>
+<h3 id="要求">要求:</h3>
+<p>输入：第一行输入M,N分别表示地图的行列，接下来M行每行输入N个数字表示地图<br>输出：输出一个整数表示大山的数目</p>
+<h3 id="示例">示例:</h3>
+<p>输入：</p>
+<pre><code class="language-in">4 5
+1 1 0 0 0
+1 1 0 0 0
+0 0 1 0 0
+0 0 0 1 1</code></pre>
+<p>输出：</p>
+<pre><code class="language-out">3</code></pre>
+<h3 id="范围">范围:</h3>
+<p>对于   5%   的数据：M，N ≤ 10<br>对于 100% 的数据：M，N ≤ 2000</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-5</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">跳跃</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p><strong>Drizzle</strong> 被困到一条充满数字的方块路中，假设这条路由一个非负的整数数组<code>m</code>组成，Drizzle 最开始的位置在下标 <code>start</code> 处，当他位于下标<code>i</code>位置时可以向前或者向后跳跃<code>m[i]</code>步数，已知元素值为<code>0</code>处的位置是出口，且只能通过出口出去，不可能数组越界，请你通过编程计算出Drizzle能否逃出这里。</p>
+<h3 id="要求">要求:</h3>
+<p>输入：第一行输入数组<code>m</code>的长度<code>n</code>  第二行输入数组元素，空格分割开 第三行输入起始下标<code>start</code> </p>
+<h3 id="示例">示例:</h3>
+<p>输入：</p>
+<pre><code class="language-in">7
+4 2 3 0 3 1 2
+5</code></pre>
+<p>输出：</p>
+<pre><code class="language-out">True</code></pre>
+<h3 id="范围">范围:</h3>
+<ul>
+<li>1 &lt;= m.length &lt;= 5 * 10^4</li>
+<li>0 &lt;= m[i] &lt; m.length</li>
+<li>0 &lt;= start &lt; m.length</li>
+</ul>
+</div></div></div></div></div><hr/></div></div>
+
+</body>
+</html>
