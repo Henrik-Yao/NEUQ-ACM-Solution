@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1e9+7;
+
+int n,e,ed[55][5],b[20005];
+
+inline int cal(int x){
+	int asd=N;
+	for(int i=1;i<=e;i++){
+		if(ed[i][1]==x&&b[ed[i][2]]==0)asd=min(asd,ed[i][2]);
+		else if(ed[i][2]==x&&b[ed[i][1]]==0)asd=min(asd,ed[i][1]);
+	}
+	return asd;
+}
+
+void dfs(int x){
+	b[x]=1;
+	cout<<x<<" ";
+	int next=cal(x);
+	while(next!=N){
+		dfs(next);
+		next=cal(x);
+	}
+	return;
+}
+
+int main(){
+	int aa,bb;
+	cin>>n>>e;
+	for(int i=1;i<=e;i++){
+		cin>>aa>>bb;
+		ed[i][1]=aa;
+		ed[i][2]=bb;
+	}
+	dfs(0);
+	return 0;
+}
