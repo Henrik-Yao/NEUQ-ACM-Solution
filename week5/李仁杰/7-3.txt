@@ -1,0 +1,40 @@
+#include <iostream>
+#include <set>
+#include <map>
+#include <queue>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int* visit;
+multimap<int, int> m;
+
+void dfs(int n) {
+    visit[n] = 1;
+    cout << n << ' ';    
+    set<int> s;
+    for(auto it = m.find(n); it != m.end() && (*it).first == n; it++){
+        s.insert((*it).second);
+    }
+    for(auto it = s.begin(); it != s.end(); it++){
+        if(visit[*it]) continue;
+        visit[*it] = 1;
+        dfs(*it);
+    }
+}
+
+int main() {
+    int n, e;
+    cin >> n >> e;
+    visit = new int[n] {};
+    for (int i = 0; i < e; i++) {
+        int a, b;
+        cin >> a >> b;
+        m.insert(make_pair(a, b));
+    }
+    for (int i = 0; i < n; i++) {
+        if (!visit[i]) {
+            dfs(i);
+        }
+    }
+}

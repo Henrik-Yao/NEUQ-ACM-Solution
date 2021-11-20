@@ -1,0 +1,43 @@
+#include <iostream>
+#include <set>
+#include <map>
+#include <queue>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int m, n, ** visit, ** a, ans = 0;
+int dx[4] = {0,1,0,-1};
+int dy[4] = {-1,0,1,0};
+
+void dfs(int x, int y){
+    if(x < 1 || x > m || y < 1 || y > n) return;
+    if(visit[x][y] || !a[x][y]) return;
+    visit[x][y] = 1;
+    for(int i = 0; i < 4; i++){
+        dfs(x + dx[i], y + dy[i]);
+    }
+}
+
+int main(){
+    cin >> m >> n;
+    a = new int*[m+1];
+    visit = new int*[m+1];
+    for(int i = 0; i < m+1; i++){
+        a[i] = new int[n+1] {};
+        visit[i] = new int[n+1] {};
+    }
+    for(int i = 1; i <= m; i++){
+        for(int j = 1; j <= n; j++){
+        cin >> a[i][j];
+        }
+    }
+    for(int i = 1; i <= m; i++){
+        for(int j = 1; j <= n; j++){
+            if(visit[i][j] || !a[i][j]) continue;
+            dfs(i, j);
+            ans++;
+        }
+    }
+    cout << ans;
+}
