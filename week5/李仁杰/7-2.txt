@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+bool is(int num){
+    int flag = 1;
+    for (int i = 2; i * i <= num; i++){
+        if(num%i == 0) flag = 0;
+    }
+    if(flag) return true;
+    else return false;
+}
+
+int main(){
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        int num;
+        cin >> num;
+        if (is(num)) cout << 1;
+        else if(is(num - 2) || num % 2==0) cout << 2;
+        else cout << 3;
+        cout << endl;
+    }
+}
