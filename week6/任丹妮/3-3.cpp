@@ -1,43 +1,68 @@
 #include <bits/stdc++.h>
-#define maxn 1001
-using namespace  std;
-void str_bin(char *str1,char *str2,int len1,int len2){
-	char str[maxn];
-	int i=0,j=0,k=0;
-	while(i<len1&&j<len2){
-		if(str1[i]<str2[j])
-			{
-				str[k]=str1[i];
-				k++;
-				i++;
-			}
+#include <stdio.h>
+using namespace std;
+vector<string>mode;
+void getNext(int l,string a,int *next){
+    next[0]=-1;
+    int k=-1,i=0;
+    while(i<l){
+        if(k==-1||a[i]==a[k]){
+            i++;k++;
+            next[i]=k;
+        }
+        else k=next[k];
+    }
+}
+bool KMP(string T,string P,int *b){
+    int i=0,j=0;
+    int len1=T.length();
+    int len2=P.length();
+    while(i<len1&&j<len2){
+        if(j==-1||T[i]==P[j])
+        {
+            i++;j++;
+            if(j==len2) return true;
+        }
+        else j=b[j];
+    }
+    return false;
+}
+int main(){
+    string a,s;
+    getline(cin,a);
+    getline(cin,s);
+    int len=a.length();
+    int len1=s.length();
+    for(int i=0;i<len1;i++)
+    if(s[i]>='A'&&s[i]<='Z') s[i]+=32;
+    string b="";
+    int flag=0;
+    for(int i=0;i<len;i++){
+    	if(a[i]>='A'&&a[i]<='Z') {
+    		b+=a[i]+32;
+            if(flag) flag=0;
+		}
+		else if(a[i]>='a'&&a[i]<='z'){
+			b+=a[i];
+            if(flag) flag=0;
+		}
 		else {
-			str[k]=str2[j];
-			k++;
-			j++;
+			if(!flag) {
+                mode.push_back(b);
+			    b="";
+                flag=1;
+            }
 		}
 	}
-	while(i<len1){
-		str[k]=str1[i];
-		k++;
-		i++;
+    if(b!="") mode.push_back(b);
+	int ans=0;
+	int next[10001];
+	getNext(len1,s,next);
+	while(!mode.empty()){
+		string c=mode.back();
+		mode.pop_back();
+		if(KMP(c,s,next)) ans++;
 	}
-	while(j<len2){
-		str[k]=str2[j];
-		k++;
-		j++;
-	}
-	for(int i=0;i<k;i++)
-	cout<<str[i];
-	cout<<endl;
-}
-int main()
-{
-	char str1[maxn],str2[maxn];
-	cin>>str1>>str2;
-	int len1=strlen(str1);
-	int len2=strlen(str2);
-	str_bin(str1,str2,len1,len2);
-	printf("姓名：任丹妮 学号：202010014\n");
+	cout<<ans;
 	return 0;
 }
