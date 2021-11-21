@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int n,t;
+
+bool judge(int x) {
+	for(register int i=2;i<=sqrt(x);i++)if(x%i==0)return false;
+	return true;
+}
+
+int main() {
+	cin>>n;
+	while(n--){
+		cin>>t;
+		if(t%2==0)cout<<2<<endl;
+		else if(judge(t))cout<<1<<endl;
+		else{
+			if(judge(t-2)) {
+				cout<<2<<endl;
+			} else cout<<3<<endl;
+		}
+	}
+	return 0;
+}
