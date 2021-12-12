@@ -1,0 +1,13 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+int main(){
+    long long a[55];
+    a[1]=1,a[2]=2,a[3]=4;
+    int n=50,i;
+    for(i=4;i<=n;i++){
+        a[i]=a[i-1]+a[i-2]+a[i-3];
+    }
+    while(~scanf("%d",&i))cout<<a[i]<<endl;
+    return 0;
+}
