@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int M=50;
+long long int a[M];
+int main()
+{
+	int g;
+	a[1]=1;a[2]=2;a[3]=4;
+	for(int i=4;i<=50;i++)
+	{
+		a[i]=a[i-3]+a[i-2]+a[i-1];
+	}
+	while(cin>>g)
+	{
+		cout<<a[g]<<endl; 
+	}
+} 
