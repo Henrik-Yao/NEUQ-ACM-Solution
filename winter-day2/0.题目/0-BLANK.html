@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>寒假集训—day2（树）</title>
+  <style>.paper {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--text-normal);
+}
+.paper *,
+.paper *::before,
+.paper *::after {
+  box-sizing: border-box;
+}
+.paper pre,
+.paper code,
+.paper kbd,
+.paper samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+.paper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.paper label {
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.paper hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+.paper .result table {
+  width: 100%;
+}
+.paper .result th,
+.paper .result td {
+  border: 1px solid var(--border-all);
+  text-align: center;
+}
+.paper .result .box {
+  border: 1px solid var(--border-all);
+  padding: 8px;
+  color: var(--text-normal);
+}
+/* stylelint-disable */
+.ques-view, .rendered-markdown {
+  line-height: 1.5;
+}
+.ques-view p, .rendered-markdown p {
+  margin: 0.5em 0;
+}
+.ques-view h1, .rendered-markdown h1, .ques-view h2, .rendered-markdown h2, .ques-view h3, .rendered-markdown h3, .ques-view h4, .rendered-markdown h4, .ques-view h5, .rendered-markdown h5, .ques-view h6, .rendered-markdown h6 {
+  margin: 0.8em 0;
+}
+.ques-view img, .rendered-markdown img {
+  max-width: 100%;
+}
+.ques-view .ques-list, .rendered-markdown .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li, .rendered-markdown .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input, .rendered-markdown .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea, .rendered-markdown textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code, .rendered-markdown code {
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 3px;
+  border: 1px solid var(--border-all);
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+}
+.ques-view pre, .rendered-markdown pre {
+  padding: 6px 12px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-all);
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code, .rendered-markdown pre code {
+  background: none;
+  border: none;
+  color: var(--text-normal);
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr, .rendered-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border-all);
+}
+.ques-view blockquote, .rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.ques-view table, .rendered-markdown table {
+  margin: 0 auto;
+}
+.ques-view table th, .rendered-markdown table th, .ques-view table td, .rendered-markdown table td {
+  border: 1px solid var(--border-all);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score, .rendered-markdown .ques-score {
+  color: var(--text-light);
+  user-select: none;
+}
+.rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.rendered-markdown blockquote p {
+  margin-bottom: 0;
+}
+.rendered-markdown table td, .rendered-markdown table th {
+  border: 1px solid var(--border-all);
+  padding: 5px;
+}
+.rendered-markdown p:first-child {
+  margin: 0;
+}
+.katex-mathml {
+  display: none;
+}
+.code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Monaco, Courier, "Courier New", monospace;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="paper" style="max-width:940px;margin:auto" data-reactroot=""><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">编程题</span><span>得分：暂无</span><span style="margin-left:20px">总分：1255</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-1</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">二叉树叶结点值和最大层</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>已知一棵非空二叉树结点的数据域为不等于0的整数，请编写程序找出该二叉树中叶结点数据值之和最大的层。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入为一组用空格间隔的整数，个数不超过100个，表示带空指针信息的二叉树先根序列。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出为一个整数，表示叶结点数据值之和最大的层，如果存在多个满足条件的层，则输出最下面一层。</p>
+<h3 id="输入样例1">输入样例1:</h3>
+<pre><code class="language-in">1 2 0 0 3 0 0
+</code></pre>
+<h3 id="输出样例1">输出样例1</h3>
+<pre><code class="language-out">1
+</code></pre>
+<h3 id="输入样例2">输入样例2:</h3>
+<pre><code class="language-in">1 -2 0 0 3 -1 0 0 -1 0 0
+</code></pre>
+<h3 id="输出样例2">输出样例2:</h3>
+<pre><code class="language-out">2
+</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-2</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">二叉树最长匹配前后缀路径</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>假定二叉树结点值为不等于0的整数。我们将二叉树中以根结点为起点、非叶结点为终点的路径称为“前缀路径”，以非根结点为起点、叶结点为终点的路径称为“后缀路径”。我们称前缀路径p和后缀路径q为最长匹配前后缀路径，如果p和q满足下列条件：</p>
+<p>（1）路径p和q同在一条以根为起点、以叶为终点的路径里；</p>
+<p>（2）路径p和q包含的结点序列值相等；</p>
+<p>（3）路径p和q是整个二叉树中所有满足条件（1）（2）的最长者。</p>
+<p><img src="https://images.ptausercontent.com/2e34b967-acca-4fa0-9d9f-4e1c886d9f8a.jpg" alt="pic.jpg"></p>
+<p>例如上面二叉树中5-9-5为最长匹配前后缀路径。请编写程序找出给定二叉树的最长匹配前后缀路径。备注：如果某前缀路径和后缀路径不在同一条以根为起点以叶为终点的路径里，则它们不能匹配，例如上面二叉树中5-2-3并不匹配。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入包含多组测试数据。第一行为整数T，表示测试数据组数。每组数据为一行整数，表示带空指针信息的二叉树先根序列，其中空指针信息用0表示。所有测试数据包含的总结点个数不超过150000，高度不超过10000。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出为T行，表示每组数据的最长匹配前后缀路径长度，若不存在满足条件的路径，则输出-1。</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">4
+1 2 3 1 2 3 1 0 0 0 0 0 0 0 0
+1 2 3 4 0 0 0 1 2 0 0 0 0
+1 2 0 0 3 0 4 0 0
+1 1 0 0 1 0 0
+</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">3
+1
+-1
+0
+</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-3</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">重建二叉树</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>给定非空二叉树的中根序列和后根序列，请编写程序创建该二叉树，计算其高度和先根序列，最后删除该二叉树；如给定的中根和后根序列不合法，则亦能识别。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入包含多组数据（不超过10组），每组为两行字符串，第一行表示某二叉树的后根序列，第二行表示其中根序列。结点的值均为A-Z的大写字母，故二叉树结点个数不超过26，且保证输入的两个序列都是结点的全排列，但不一定是合法的中根和后根序列。输入保证不是空二叉树。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>对于每组数据，如果输入的序列不合法（不是同一棵树的中根序列和后根序列），则输出INVALID；若输入序列合法，输出为两行，第一行为一个整数，表示该二叉树的高度，第二行为一个字符串，表示该二叉树的先根序列。</p>
+<h3 id="输入样例1">输入样例1:</h3>
+<pre><code class="language-in">CEFDBHGA
+CBEDFAGH
+CBEDFAGH
+CEFDBHGA
+BCA 
+CAB
+</code></pre>
+<h3 id="输出样例1">输出样例1:</h3>
+<pre><code class="language-out">3
+ABCDEFGH
+INVALID
+INVALID
+</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-4</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">树最近公共祖先</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>已知树结点为互不相等且不等于0的整数。请编写程序找出非空树中两个结点的最近公共祖先。例如对于图1(a)所示的树t，结点1和2的最近公共祖先是5；结点2和4的最近公共祖先是8。</p>
+<p><img src="https://images.ptausercontent.com/43e51246-40dc-4ad6-99f3-df4fad65f182.jpg" alt="tree.jpg"></p>
+<h3 id="输入格式">输入格式:</h3>
+<p>每个测试点包含多组数据，第1行为一个正整数T，表示数组组数。每组数据为2行，第1行为一组用空格间隔的整数，个数不超过100个，表示带空指针信息的二叉树先根序列。其中空指针信息用0表示。第2行为空格间隔的两个互不相等的整数A和B，表示给定的两个结点值，保证A和B肯定在输入的树中。</p>
+<p>注：我们已知二叉树与其自然对应的树相比，二叉树中结点的左孩子对应树中结点的左孩子，二叉树中结点的右孩子对应树中结点的右兄弟。进而我们可以利用“带空指针信息的先根序列构建二叉树”的方法来构建其对应的树的左孩子-右兄弟存储结构。如8 5 1 0 6 0 2 0 0 3 4 0 0 7 0 0 0对应图1(a)所示的树，1 2 0 3 0 4 0 0 0对应如图1(b)所示的树。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>对每组数据输出一行，为一个整数，表示A和B的最近公共祖先结点的值。</p>
+<h3 id="输入样例1">输入样例1:</h3>
+<pre><code class="language-in">2
+8 5 1 0 6 0 2 0 0 3 4 0 0 7 0 0 0
+1 2
+8 5 1 0 6 0 2 0 0 3 4 0 0 7 0 0 0
+2 4
+</code></pre>
+<h3 id="输出样例1">输出样例1:</h3>
+<pre><code class="language-out">5
+8
+</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-5</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">二叉树路径和</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>已知二叉树结点数据值为不等于0的整数。给定一个整数K，请编写程序找出结点值之和等于K的路径。</p>
+<p>本题的“路径”定义为二叉树中的结点序列<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>v</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">v_i, …, v_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，序列中前一个结点是后一个结点的父结点，但<strong>路径不一定是以根结点为起点，也不一定是以叶结点为终点</strong>。例如K=7，对于图1所示的二叉树t，满足条件的路径有2条，即5-2和7。若没有满足条件的路径，则亦能识别。</p>
+<p><img src="https://images.ptausercontent.com/b26bbcd6-9358-414f-b9ce-770df045f962.jpg" alt="pic2.jpg"></p>
+<h3 id="输入格式">输入格式:</h3>
+<p>每个测试点包含多组数据，第一行为整数T，表示数据组数。接下来T行，每行为一组用空格间隔的整数，表示带空指针信息的二叉树先根序列以及整数K，其中空指针信息用0表示。每个测试点总结点个数不超过150000，高度不超过10000。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出为T行。对每组数据，输出一条满足条件的路径（每个数字后一个空格），若存在多条满足条件的路径，则输出最短（包含结点个数最少）者，若存在多条最短的路径，则输出最靠右下者。若不存在满足条件的路径，则输出no available path。</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">2
+8 5 1 0 0 2 0 0 7 0 0 7
+8 5 1 0 0 2 0 0 7 0 0 6
+</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">7 
+5 1 
+</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-6</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">罪犯帮派</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>Tabu市的警察局决定结束混乱，因此要采取行动根除城市中的几大帮派。目前的问题是，给出两个罪犯，他们是属于同一帮派么？城市里一共有多少个帮派？假设在Tabu市现有n名罪犯，编号为1到n，给出m条消息表示属于同一帮派的两个罪犯编号。请基于这些不完全的信息帮助警方计算出他们想要的信息。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>输入第一行为三个正整数，n、m和q。n为罪犯数；m为给出的已知信息数量；q为查询数。接下来m行，每行2个正整数a和b，表示罪犯a和罪犯b属于同一帮派。接下来q行，每行2个正整数c和d，即查询罪犯c和d是否属于同一帮派。每行输入的整数以空格间隔，n、m、q均不超过1000。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>输出为q+1行，前q行对应于输入的q个查询的结果，如果属于同一帮派，则输出“In the same gang.”，否则输出“In different gangs.”。最后一行为一个整数，表示帮派数目。</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">3 2 1
+1 2
+2 3
+1 3
+</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">In the same gang.
+1
+</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-7</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">哈夫曼编码</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>给定一段文字，如果我们统计出字母出现的频率，是可以根据哈夫曼算法给出一套编码，使得用此编码压缩原文可以得到最短的编码总长。然而哈夫曼编码并不是唯一的。例如对字符串&quot;aaaxuaxz&quot;，容易得到字母 &#39;a&#39;、&#39;x&#39;、&#39;u&#39;、&#39;z&#39; 的出现频率对应为 4、2、1、1。我们可以设计编码 {&#39;a&#39;=0, &#39;x&#39;=10, &#39;u&#39;=110, &#39;z&#39;=111}，也可以用另一套 {&#39;a&#39;=1, &#39;x&#39;=01, &#39;u&#39;=001, &#39;z&#39;=000}，还可以用 {&#39;a&#39;=0, &#39;x&#39;=11, &#39;u&#39;=100, &#39;z&#39;=101}，三套编码都可以把原文压缩到 14 个字节。但是 {&#39;a&#39;=0, &#39;x&#39;=01, &#39;u&#39;=011, &#39;z&#39;=001} 就不是哈夫曼编码，因为用这套编码压缩得到 00001011001001 后，解码的结果不唯一，&quot;aaaxuaxz&quot; 和 &quot;aazuaxax&quot; 都可以对应解码的结果。本题就请你判断任一套编码是否哈夫曼编码。</p>
+<h3 id="输入格式：">输入格式：</h3>
+<p>首先第一行给出一个正整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>≤</mo><mi>N</mi><mo>≤</mo><mn>63</mn></mrow><annotation encoding="application/x-tex">2\le N\le 63</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">63</span></span></span></span>），随后第二行给出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个不重复的字符及其出现频率，格式如下：</p>
+<pre><code>c[1] f[1] c[2] f[2] ... c[N] f[N]</code></pre>
+<p>其中<code>c[i]</code>是集合{&#39;0&#39; - &#39;9&#39;, &#39;a&#39; - &#39;z&#39;, &#39;A&#39; - &#39;Z&#39;, &#39;_&#39;}中的字符；<code>f[i]</code>是<code>c[i]</code>的出现频率，为不超过 1000 的整数。再下一行给出一个正整数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">\le 1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1000</span></span></span></span>），随后是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 套待检的编码。每套编码占 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 行，格式为：</p>
+<pre><code>c[i] code[i]</code></pre>
+<p>其中<code>c[i]</code>是第<code>i</code>个字符；<code>code[i]</code>是不超过63个&#39;0&#39;和&#39;1&#39;的非空字符串。</p>
+<h3 id="输出格式：">输出格式：</h3>
+<p>对每套待检编码，如果是正确的哈夫曼编码，就在一行中输出&quot;Yes&quot;，否则输出&quot;No&quot;。</p>
+<p>注意：最优编码并不一定通过哈夫曼算法得到。任何能压缩到最优长度的前缀编码都应被判为正确。</p>
+<h3 id="输入样例：">输入样例：</h3>
+<pre><code class="language-in">7
+A 1 B 1 C 1 D 3 E 3 F 6 G 6
+4
+A 00000
+B 00001
+C 0001
+D 001
+E 01
+F 10
+G 11
+A 01010
+B 01011
+C 0100
+D 011
+E 10
+F 11
+G 00
+A 000
+B 001
+C 010
+D 011
+E 100
+F 101
+G 110
+A 00000
+B 00001
+C 0001
+D 001
+E 00
+F 10
+G 11</code></pre>
+<h3 id="输出样例：">输出样例：</h3>
+<pre><code class="language-out">Yes
+Yes
+No
+No</code></pre>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">7-8</div><div style="overflow:auto;flex-grow:1"><div style="margin-bottom:8px;display:flex"><div style="font-weight:bold">哈夫曼编码译码</div><div style="margin-left:8px;color:gray">(300分)</div></div><div><div class="rendered-markdown"><p>编写一个哈夫曼编码译码程序。</p>
+<p>按词频从小到大的顺序给出各个字符（不超过30个）的词频，根据词频构造哈夫曼树，给出每个字符的哈夫曼编码，并对给出的语句进行译码。</p>
+<p>为确保构建的哈夫曼树唯一，本题做如下限定：</p>
+<p>（1）选择根结点权值最小的两棵二叉树时，选取权值较小者作为左子树。</p>
+<p>（2）若多棵二叉树根结点权值相等，按先后次序分左右，先出现的作为左子树，后出现的作为右子树。</p>
+<p>生成哈夫曼编码时，哈夫曼树左分支标记为0，右分支标记为1。</p>
+<h3 id="输入格式">输入格式:</h3>
+<p>第一行输入字符个数n；</p>
+<p>第二行到第n行输入相应的字符及其词频(可以是整数，与可以是小数）；</p>
+<p>最后一行输入需进行译码的串。</p>
+<h3 id="输出格式">输出格式:</h3>
+<p>首先按树的先序顺序输出所有字符的编码，每个编码占一行；</p>
+<p>最后一行输出需译码的原文，加上original:字样。</p>
+<p>输出中均无空格</p>
+<h3 id="输入样例">输入样例:</h3>
+<pre><code class="language-in">3
+m1
+n1
+c2
+10110
+</code></pre>
+<h3 id="输出样例">输出样例:</h3>
+<pre><code class="language-out">c:0
+m:10
+n:11
+original:mnc</code></pre>
+</div></div></div></div></div><hr/></div></div>
+
+</body>
+</html>
