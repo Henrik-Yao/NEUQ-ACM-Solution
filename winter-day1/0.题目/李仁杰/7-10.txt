@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+int st[100001], s1[100001], k = 0;
+
+int main() {
+	int n, ans = 0;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		int num;
+		cin >> num;
+		if (ans == 0) {
+			st[0] = num;
+			s1[k++] = num;
+			ans++;
+		}
+		if (num < st[0]) {
+			st[0] = num;
+			s1[k++] = num;
+		}
+		else if (num > st[ans - 1]) {
+			st[ans] = num;
+			ans++;
+		}
+		else {
+			int change = lower_bound(st, st + ans, num) - st;
+			st[change] = num;
+			//if (change == 0) s1[k++] = num;
+		}
+	}
+	for (int i = 0; i < k - 1; i++) cout << s1[i] << ' ';
+    cout << s1[k-1] << endl;
+	cout << ans;
+}
