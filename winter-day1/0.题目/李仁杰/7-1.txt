@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int n, q;
+long long a[1000010];
+
+void change(int i, int v) {
+    while (i <= n) {
+        a[i] += v;
+        int k = i & (-i);
+        i += k;
+    }
+}
+
+long long sum(int i) {
+    long long sum = 0;
+    while (i > 0) {
+        sum += a[i];
+        int k = i & (-i);
+        i -= k;
+    }
+    return sum;
+}
+
+int main() {
+    cin >> n >> q;
+    for (int i = 1; i <= n; i++) {
+        int v;
+        cin >> v;
+        change(i, v);
+    }
+    for (int i = 0; i < q; i++) {
+        int op, x, y;
+        cin >> op >> x >> y;
+        if (op == 1) change(x, y);
+        else cout << sum(y) - sum(x - 1) << endl;
+    }
+}

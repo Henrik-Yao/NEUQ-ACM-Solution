@@ -1,0 +1,90 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+vector<char> chain; // 字符串链表，用数组模拟
+bool isInsert = false;  // 是否是插入状态
+int index = 0;
+
+void moveToHome() {
+    index = 0;
+}
+
+void moveToEnd() {
+    index = chain.size();
+}
+
+void moveLeft() {
+    if (index - 1 >= 0) {
+        index--;
+    }
+}
+
+void moveRight() {
+    if (index + 1 <= chain.size()) {
+        index++;
+    }
+}
+
+void changeInsertstate() {
+    isInsert = !isInsert;
+}
+
+void backspace() {
+    if (chain.size() > 0) {
+        chain.erase(chain.begin() + index - 1);
+        index--;
+    }
+}
+
+void input(char ch) {
+    if (index == chain.size() - 1) {
+        chain.push_back(ch);
+    }
+    else if (isInsert) {
+        chain[index] = ch;
+    }
+    else {
+        chain.insert(chain.begin() + index, ch);
+    }
+    index++;
+}
+
+string toString() {
+    string res;
+    for (const char& ch : chain)  res.push_back(ch);
+    return res;
+}
+
+void op(const char& ch) {
+    if (ch == '[') {
+        moveToHome();
+    }
+    else if (ch == ']') {
+        moveToEnd();
+    }
+    else if (ch == '{') {
+        moveLeft();
+    }
+    else if (ch == '}') {
+        moveRight();
+    }
+    else if (ch == '-') {
+        changeInsertstate();
+    }
+    else if (ch == '=') {
+        backspace();
+    }
+    else {
+        input(ch);
+    }
+}
+
+int main() {
+    string line;    
+    getline(cin, line);
+    for (const char& ch : line) op(ch);
+    cout << toString() << endl;
+    return 0;
+}
