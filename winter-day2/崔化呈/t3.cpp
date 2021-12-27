@@ -1,56 +1,85 @@
 #include<bits/stdc++.h>
 using namespace std;
+const int M=50005;
+struct edge
+{
+	int to,nex;
+}e[M/2];
+int head[M],tot=0;
+void add(int x,int y)
+{
+	e[++tot].to=y;
+	e[tot].nex=head[x];
+	head[x]=tot;
+}
+int dep[M],fa[M][22],lg[M];
+void dfs(int now,int fath)
+{
+	fa[now][0]=fath;
+	dep[now]=dep[fath]+1;
+	for(int i=1;i<=lg[dep[now]];i++)
+	{
+		fa[now][i]=fa[fa[now][i-1]][i-1];
+	}
+	for(int i=head[now];i;i=e[i].nex)
+	{
+		if(e[i].to!=fath){dfs(e[i].to,now);}
+	}
+}
+int LCA(int x,int y)
+{
+	if(dep[x]<dep[y]){swap(x,y);}
+	while(dep[x]>dep[y])
+	{
+		x=fa[x][lg[dep[x]-dep[y]]-1];
+	}
+	if(x==y){return x;}
+	for(int i=lg[dep[x]]-1;i>=0;i--)
+	{
+		if(fa[x][i]!=fa[y][i])
+		{
+			x=fa[x][i],y=fa[y][i];
+		}
+	}
+	return fa[x][0];
+}
 int main()
 {
 	int n;
 	cin>>n;
 	while(n--)
 	{
-		int t,pre[1010],dep[1010],d=1;
-		stack<int> jie;
-		cin>>t;
-		dep[t]=d++;
-		jie.push(t);
-		while(!jie.empty())
+		stack<int> t;
+		int tt,nu,r;
+		cin>>tt;
+		r=tt;
+		t.push(tt);
+		while(!t.empty())
 		{
-			cin>>t;
-			if(t)
+			cin>>tt;
+			if(tt)
 			{
-				pre[t]=jie.top(); //½Úµã»¥²»ÏàµÈ
-				dep[t]=d++;
-				jie.push(t); 
+				add(tt,t.top());
+				add(t.top(),tt);
+				t.push(tt);
+				nu++;
 			}
 			else
 			{
-				jie.pop();
-				d--;
+				t.pop();
 			}
 		}
-		int a,b;
-		cin>>t; //0
-		cin>>a>>b;
-		if(dep[a]>dep[b])
-		{
-			t=dep[a]-dep[b];
-			while(t--)
-			{
-				a=pre[a];
-			}
-		}
-		else
-		{
-			t=dep[b]-dep[a];
-			while(t--)
-			{
-				b=pre[b];
-			}
-		}
-		while(pre[a]!=pre[b])  //a,bÒ»¶¨ÔÚÊäÈëµÄÊ÷ÖÐ 
-		{
-			a=pre[a];
-			b=pre[b];
-		}
-		cout<<pre[a]<<endl;
+		cin>>tt;
+		for(int i=1;i<=nu;i++)
+	{
+		lg[i]=lg[i-1]+(1<<lg[i-1]==i);
 	}
+		dfs(r,0);
+		int x,y;
+		cin>>x>>y;
+		cout<<LCA(x,y)<<endl;
+	}
+	
+	
 	return 0;
 }
