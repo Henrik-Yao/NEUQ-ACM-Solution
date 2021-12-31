@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <map>
+using namespace std;
+
+map<string, int> m;
+map<int, string> m1;
+
+//a b c d e || f g h i j
+//k l m n o || p q r s t
+//u v w x y || z
+
+int toNum(char c) {
+	if (c <= '9' && c >= '0') return c - '0';
+	else if (c <= 'z' && c >= 'a') return c - 'a' + 10;
+	else return c - 'A' + 10;
+}
+
+int toHash(string s) {
+	//cout << s.length() << endl;
+	int l = (s.length() - 1) / 4, y = (s.length() - 1) % 4 + 1, num[4]{ 0 }, n = 0, ans = 0;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < l; j++) num[i] = (num[i] + toNum(s[n++])) % 36;
+		if (y-- > 0) num[i] = (num[i] + toNum(s[n++])) % 36;
+		//cout << num[i] << endl;
+		ans = ans * 36 + num[i];
+	}
+	return ans;
+}
+
+int main() {
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		char action;
+		string name, key;
+		cin >> action >> name >> key;
+		int ans = toHash(key);
+		if (action == 'R') {
+			if (m.find(name) == m.end()) {
+				m.insert(make_pair(name, ans));
+				m1.insert(make_pair(ans, key));
+				cout << "Signed!\n";
+			}
+			else cout << "Repeated!\n";
+		}
+		else {
+			if (m.find(name) == m.end()) cout << "Failed!\n";
+			else {
+				if ((*m.find(name)).second == ans) {
+					if (key != (*m1.find(ans)).second) cout << "Attention!\n";
+					else cout << "Success!\n";
+				}
+				else cout << "Failed!\n";
+			}
+		}
+	}
+}

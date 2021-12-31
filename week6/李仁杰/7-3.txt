@@ -1,0 +1,68 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int nex[100005], ans = 0, lenA = 0;
+string B;
+char A[1005][1005];
+
+void getNext()
+{
+	int i = 0, j = -1;
+	nex[i] = j;
+	while (i < B.size() - 1)
+	{
+		if (j == -1 || B[i] == B[j])
+		{
+			++i, ++j;
+			if (B[i] != B[j]) nex[i] = j;
+			else nex[i] = nex[j];
+		}
+		else j = nex[j];
+	}
+}
+
+void KMP(string A)
+{
+	int i, j;
+	i = 0, j = 0;
+	int lenB = B.size();
+	while (i < A.size() && j < lenB)
+	{
+		if (j == -1 || A[i] == B[j] || fabs(A[i] - B[j]) == int('a' - 'A'))
+		{
+			j++;
+			i++;
+		}
+		else j = nex[j];
+	}
+	if (j == B.size()) ans++;
+}
+
+int main()
+{
+	int i = 0, j = 0;
+	char c;
+	for (; (c = getchar()) != '\n';)
+	{
+		if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') A[j][i++] = c;
+		else
+		{
+			if (i)
+			{
+				j++;
+				i = 0;
+			}
+		}
+		
+	}
+	j++;
+	cin >> B;
+	getNext();
+	for (i = 0; i < j; i++)
+	{
+		lenA = strlen(A[i]);
+		KMP(A[i]);
+	}
+	cout << ans;
+	return 0;
+}

@@ -1,0 +1,25 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+    int num;
+    multiset<int> s;
+    while (cin >> num) s.insert(num);
+    for (auto it = s.begin(); it != --s.end(); it++) cout << *it << "->";
+    cout << *(--s.end()) << endl;
+    int temp = -1;
+    for (auto it = s.begin(); it != s.end();) {
+        if (*it % 2 == 1) {
+            if(temp != -1) cout << temp << "->";
+            temp = *it;
+            s.erase(it++);
+        }
+        else it++;
+    }
+    if (temp != -1) cout << temp;
+    cout << endl;
+    for (auto it = s.begin(); !s.empty() && it != --s.end(); it++) cout << *it << "->";
+    if (!s.empty()) cout << *(--s.end());
+    s.clear();
+}

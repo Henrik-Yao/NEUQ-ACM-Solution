@@ -1,0 +1,26 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    sort(a,a+n);
+    int len=a[n-1]-a[0]+1;
+    int l[n],le=0,lee;
+    for(lee=0;lee<n-1;lee++){
+        if(a[lee+1]-1!=a[lee]){
+            l[le++]=a[lee+1]-1-a[lee];
+        }
+    }
+    sort(l,l+le);
+    m--,le--;
+    while(m--){
+        len-=l[le--];
+    }
+    cout<<len;
+    return 0;
+}
