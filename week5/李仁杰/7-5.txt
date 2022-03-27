@@ -1,0 +1,32 @@
+#include <iostream>
+#include <set>
+#include <map>
+#include <queue>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int n, * a, start, * visit, flag = 0;
+
+void search(int m) {
+    if (flag) return;
+    if (a[m] == 0) {
+        cout << "True";
+        flag = 1;
+        return;
+    }
+    if (visit[m]) return;
+    visit[m] = 1;
+    if (m + a[m] < n) search(m + a[m]);
+    if (m - a[m] > 0) search(m - a[m]);
+}
+
+int main() {
+    cin >> n;
+    a = new int[n]{ 1 };
+    visit = new int[n] {};
+    for (int i = 0; i < n; i++) cin >> a[i];
+    cin >> start;
+    search(start);
+    if (!flag) cout << "False";
+}

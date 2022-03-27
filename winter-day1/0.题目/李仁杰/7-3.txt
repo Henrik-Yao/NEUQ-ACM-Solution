@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int N, M, K, n, i = 1, t; 
+    cin >> N >> M >> K;
+    int* x = new int[N] {};
+    if (N == 1) cout << "1 ";
+    else
+    {
+        for (n = 0; n < N; n++)
+        {
+            if (n % 2 == 0)
+            {
+                t = 0;
+                while (t < M - 1)
+                {
+                    i--;
+                    if (i < 0)i = N - 1;
+                    if (x[i] == 0)t++;
+                }
+                x[i] = 1;
+                if (i == 0) cout << N << ' ';
+                else cout << i << ' ';
+            }
+            if (n % 2 == 1)
+            {
+                t = 0;
+                while (t < K - 1)
+                {
+                    i++;
+                    if (i > N - 1)i = 0;
+                    if (x[i] == 0)t++;
+                }
+                x[i] = 1;
+                if (i == 0) cout << N << ' ';
+                else cout << i << ' ';
+            }
+        }
+    }
+}

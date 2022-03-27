@@ -1,0 +1,42 @@
+#include<iostream>
+#include<cstring>
+#include<cstdio>
+using namespace std;
+char text[1000005],pattern[1000005];
+int Next[1000005];
+void GetNext(int pLen){
+	int k=-1;
+	Next[0]=-1;
+	int j=0;
+	while(j<pLen){
+		if(k==-1||pattern[j]==pattern[k]){
+			j++;
+			k++;
+			Next[j]=k;
+		}else {
+			k=Next[k];
+		}
+	}
+}
+int KMP(int sLen,int pLen){
+	int i=0;
+	int j=0;
+	int cnt=0;
+	while(i<sLen&&j<pLen){
+		if(j==-1||text[i]==pattern[j]){
+			i++;
+			j++;
+		}else{
+			j=Next[j];
+		}
+		if(j==pLen)cnt++,j=Next[j-1],i--;
+	}
+	return cnt; 
+}
+int main(){
+	int sLen,pLen;
+	for(sLen=0;(text[sLen]=getchar())!='\n';sLen++);
+	for(pLen=0;(pattern[pLen]=getchar())!='\n';pLen++);
+	GetNext(pLen);
+	cout<<KMP(sLen,pLen);
+}
